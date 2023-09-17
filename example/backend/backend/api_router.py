@@ -3,11 +3,7 @@ from rest_framework.routers import DefaultRouter, SimpleRouter
 
 from exampleapp.api import TagViewSet, PostViewSet, CommentViewSet, UserViewSet
 
-if settings.DEBUG:
-    router = DefaultRouter()
-else:
-    router = SimpleRouter()
-
+router = DefaultRouter() if settings.DEBUG else SimpleRouter()
 router.register("tags", TagViewSet)
 router.register("posts", PostViewSet)
 router.register("comments", CommentViewSet)

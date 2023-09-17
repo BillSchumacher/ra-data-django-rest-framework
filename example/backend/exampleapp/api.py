@@ -38,8 +38,7 @@ class CommentSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         author_data = validated_data.pop("author")
         author = Author.objects.create(**author_data)
-        comment = Comment.objects.create(author=author, **validated_data)
-        return comment
+        return Comment.objects.create(author=author, **validated_data)
 
     def update(self, instance, validated_data):
         update_instance(instance.author, validated_data.pop("author"))
